@@ -18,7 +18,7 @@
     <div class="intro">
       NFT Fragmentation Lowers the Barrier of Entry for Investing in High-Value NFTs.
     </div>
-    <div class="operate-button" style="margin-top: 40px">
+    <div class="operate-button" style="margin-top: 40px" @click="choseType()">
       Creat NFT
     </div>
     <div class="list-title">
@@ -152,9 +152,10 @@ export default {
       this.$store.dispatch("market/DaiMarketList", { param0:0}).then(res=>{
         this.daiInfo = res
       })
-      // this.$store.dispatch("market/btcMarketList", { param0:0}).then(res=>{
-      //   this.btcInfo = res
-      // })
+
+    },
+    choseType(){
+      console.log(11  )
     }
   },
 

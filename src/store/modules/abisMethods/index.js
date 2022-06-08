@@ -1,1 +1,1 @@
-import market from "@/store/modules/abisMethods/market";export default { market,}
+import creator721R from "@/store/modules/abisMethods/creator721R";import creator721 from "@/store/modules/abisMethods/creator721";import creator1155 from "@/store/modules/abisMethods/creator1155";export default { creator721R,creator721,creator1155,}

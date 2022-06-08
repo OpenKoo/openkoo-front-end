@@ -1,9 +1,9 @@
 require('dotenv').config();
 const fs = require('fs');
 
-const buildDir = "../abi/data/";
+const buildDir = "./src/abi/data/";
 
-const writeDir = "../store/modules/abisMethods/"
+const writeDir = "./src/store/modules/abisMethods/"
 if (!fs.existsSync(buildDir)) {
     throw new Error('ABI buildDir not exists');
 }
@@ -32,7 +32,7 @@ for (let i = files.length - 1; i >= 0; i--) {
 		const state = {};
 		const mutations = {};
 	`
-    let actions = ` const actions = { \n`;
+    let actions = `const actions = { \n`;
     console.log("create" + name + ".js")
 
     // deal index.js
@@ -95,7 +95,7 @@ for (let i = files.length - 1; i >= 0; i--) {
                         }).catch(err=>{
                             reject(JSON.parse(err.message.substr(24,err.message.length)).message)
                         })
-				    })
+				})
 			},\n`
 
         }
