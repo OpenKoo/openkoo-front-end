@@ -155,7 +155,12 @@ export default {
 
     },
     choseType(){
-      console.log(11  )
+      if(!this.isConnected){
+        return
+      }
+      this.$store.dispatch("creator721/initialize").then(res => {
+        console.log(res)
+      })
     }
   },
 
