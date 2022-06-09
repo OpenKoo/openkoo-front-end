@@ -18,7 +18,7 @@
     <div class="intro">
       NFT Fragmentation Lowers the Barrier of Entry for Investing in High-Value NFTs.
     </div>
-    <div class="operate-button" style="margin-top: 40px" @click="choseType()">
+    <div class="operate-button" style="margin-top: 40px" @click="isShowCreate = true">
       Creat NFT
     </div>
     <div class="list-title">
@@ -79,12 +79,14 @@
         </div>
         <div class="input-list">
           <div class="input-box">
-            <div class="name">
-              Create NFT type
-            </div>
-            <div class="input">
-              <input type="text">
-            </div>
+           <el-select v-model="value" placeholder="Please select a creation type">
+            <el-option
+            v-for="item in options"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value">
+           </el-option>
+  </el-select>
           </div>
         </div>
         <div class="operate-button">
@@ -102,20 +104,18 @@ export default {
   name: "list",
   data(){
     return{
-      isShowCreate:true,
+      isShowCreate:false,
       activeIndex:0,
-      daiInfo:{
-        APY:0
-      },
-      ethInfo:{
-        APY:0
-      },
-      usdcInfo:{
-        APY:0
-      },
-      btcInfo:{
-        APY:0
-      },
+       options: [{
+          value: 'type1',
+          label: 'NFT'
+        }, {
+          value: 'type2',
+          label: '721R'
+        }, {
+          value: 'type3',
+          label: 'ERC1155'
+        }],
     }
   },
   computed:{
@@ -134,31 +134,16 @@ export default {
   },
   methods:{
     toDetail(){
-      this.$router.push({name:'detail', params:{
-
-      }})
     },
     getData(){
       if (!this.isConnected){
         return
       }
-      this.$store.dispatch("market/ethMarketList",{param0:0}).then(res=>{
-        this.ethInfo = res
-        console.log(res)
-      })
-      this.$store.dispatch("market/usdcMarketList", { param0:0}).then(res=>{
-        this.usdcInfo = res
-      })
-      this.$store.dispatch("market/DaiMarketList", { param0:0}).then(res=>{
-        this.daiInfo = res
-      })
-
     },
     choseType(){
-      if(!this.isConnected){
-        return
-      }
-      this.$store.dispatch("creator721/initialize").then(res => {
+      console.log(11)
+      this.$store.dispatch("creator721/tokenId").then(res => {
+        console.log(22)
         console.log(res)
       })
     }
